@@ -1,0 +1,98 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Select Gas Company",
+        "description": "Select your gas company from the list below.",
+        "data": {
+          "org_id": "Gas Company"
+        }
+      },
+      "auth": {
+        "title": "Choose Authentication Method",
+        "menu_options": {
+          "auth_code": "Sign in with WeChat authCode (recommended)",
+          "auth_token": "Paste access_token / refresh_token manually"
+        }
+      },
+      "auth_code": {
+        "title": "Sign in with authCode",
+        "description": "Paste the raw capture content — the accessToekn request URL or full request text, or the redirect page URL (like .../transitionPage/index?code=xxx). The authCode is extracted automatically. You may also paste the bare authCode. Selected company: {org_name}. Leave sign empty to have it computed automatically.",
+        "data": {
+          "auth_code": "authCode (paste the whole request is fine)",
+          "sign": "Sign (optional)"
+        }
+      },
+      "auth_token": {
+        "title": "Enter Authentication Info",
+        "description": "Enter the access_token and the refresh_token from the same response. Selected company: {org_name}. Leave sign empty to have it computed automatically (recommended); refresh_token is recommended, otherwise the access_token expires in about 2 hours with no renewal.",
+        "data": {
+          "access_token": "Access Token",
+          "refresh_token": "Refresh Token",
+          "sign": "Sign (optional)"
+        }
+      },
+      "select_subs": {
+        "title": "Select Gas Accounts",
+        "description": "Select the gas accounts (meters) to add. Each account will be a separate device.",
+        "data": {
+          "subs_ids": "Gas Accounts"
+        }
+      },
+      "reauth": {
+        "title": "Re-authenticate",
+        "menu_options": {
+          "reauth_code": "Sign in with WeChat authCode (recommended)",
+          "reauth_confirm": "Paste access_token / refresh_token manually"
+        }
+      },
+      "reauth_code": {
+        "title": "Sign in with a new authCode",
+        "description": "Paste the raw capture content and the authCode is extracted automatically. Company: {org_name}. Leave sign empty to have it computed automatically.",
+        "data": {
+          "auth_code": "authCode (paste the whole request is fine)",
+          "sign": "Sign (optional)"
+        }
+      },
+      "reauth_confirm": {
+        "title": "Re-enter tokens",
+        "description": "Please re-enter the access_token and refresh_token (sign may be left empty). Company: {org_name}",
+        "data": {
+          "access_token": "Access Token",
+          "refresh_token": "Refresh Token",
+          "sign": "Sign (optional)"
+        }
+      }
+    },
+    "error": {
+      "auth_failed": "Authentication failed. Please check your access_token and refresh_token, or use the authCode method instead.",
+      "token_refresh_failed": "The access_token has expired and could not be renewed with the refresh_token. Check that the refresh_token is correct and has not been invalidated by a new login, or use the authCode method. Details from the server have been written to the HA log.",
+      "no_mobile": "The API call succeeded but returned no mobile number, so the account could not be identified. Check the sign, or use the authCode method.",
+      "auth_rejected": "The server rejected this authentication. The full response has been written to the HA log.",
+      "auth_code_required": "Please enter the authCode.",
+      "auth_code_invalid": "The authCode is invalid or already used (WeChat authorization codes are single-use and expire in 5 minutes). Please obtain a new one.",
+      "no_subs": "No bound gas accounts found.",
+      "no_subs_selected": "Please select at least one gas account.",
+      "connect_error": "Connection failed. Please check your network."
+    },
+    "abort": {
+      "already_configured": "This account is already configured.",
+      "orglist_load_failed": "Failed to load orglist.json. Please check the file exists."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Reconfigure",
+        "description": "Update your tokens and sign if they have expired. You can also adjust the data refresh interval.",
+        "data": {
+          "access_token": "Access Token",
+          "refresh_token": "Refresh Token",
+          "sign": "Sign",
+          "scan_interval": "Data Refresh Interval (seconds)",
+          "token_refresh_interval": "Token Refresh Interval (seconds)"
+        }
+      }
+    }
+  }
+}
